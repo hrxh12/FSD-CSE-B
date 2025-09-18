@@ -44,17 +44,18 @@ function displayData(cv)
     },2000);
     
 }
-register(()=>{
-    sendemail(()=>{
-        login(()=>{
-            getData(()=>{
-                displayData();
-            } );
-        });
-    });
-});
+// register(()=>{
+//     sendemail(()=>{
+//         login(()=>{
+//             getData(()=>{
+//                 displayData();
+//             } );
+//         });
+//     });
+// });
 // sendemail();
 // login();
 // getData();
 // displayData();
 // console.log("other Application")
+register().then(sendemail).then(login).then()
