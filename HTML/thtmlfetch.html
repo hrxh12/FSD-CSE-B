@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>list of users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>IP</th>
+                <th>MAC Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+</body>
+<script>
+    const url="https://dummyjson.com/users?limit=1"
+const f1=async()=>{
+   try{
+   const res=await fetch(url);
+   const jsondata=await res.json();
+   jsondata.users.forEach((data)=>{
+      const row = document.createElement("tr");
+      const col1=document.createElement("td");
+      col1.innerText=data.firstName;
+      row.appendChild(col1);
+
+      const col2=document.createElement("td");
+      col2.innerText=data.email;
+      row.appendChild(col2);
+
+      const col3=document.createElement("td");
+      col3.innerText=data.ip;
+      row.appendChild(col3);
+
+      const col4=document.createElement("td");
+      col4.innerText=data.macAddress;
+      row.appendChild(col4);
+
+      const tbody=document.querySelector("tbody");
+      tbody.appendChild(row);
+
+      console.log("Name=",data.firstName)
+      console.log("Email=",data.email)
+      console.log("IP Address=",data.ip)
+      console.log("MAC Address=",data.macAddress)
+   })
+ }
+ catch(err){
+   console.error("Error:",err.message);
+ }
+}
+f1();
+</script>
+</html>
